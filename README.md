@@ -3,6 +3,7 @@
 This shows python script in action doing login!
 
 
+<h2> Steps </h2>
 1. Reads credentials.json file -> Then stores those username and passwords
 2. Opens First site -> Logs in with creds
 3. Verifies Login Success for first site
