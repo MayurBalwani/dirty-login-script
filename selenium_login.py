@@ -25,6 +25,7 @@ locators= {
 with open('credentials.json', 'r') as file:
     data= json.load(file)
 
+    print('Reading credentials from "credentials.json" file...\n')
     # Dump values from file to the variables
     saucedemo_username= data['saucedemo_username']
     saucedemo_password= data['saucedemo_password']
@@ -57,9 +58,9 @@ print('Clicking Login button')
 loginButton.click()
 
 welcomePageHeader= wait.until(EC.visibility_of_element_located(l['welcome-page-header']))
-if welcomePageHeader: print('Verified Successful Login!')
+if welcomePageHeader: print('Verified Successful Login! \n')
 
-driver.save_screenshot('Login_successful_Saucedemo.png')
+driver.save_screenshot('./snapshots/Login_successful_Saucedemo.png')
 print('Switching to the second site now!!')
 
 # Now second site!
@@ -81,7 +82,7 @@ loginButton.click()
 welcomePageHeader= wait.until(EC.visibility_of_element_located(l['login-successful']))
 if welcomePageHeader: print('Verified Successful Login!')
 
-driver.save_screenshot('Login_successful_practice_automation.png')
+driver.save_screenshot('./snapshots/Login_successful_practice_automation.png')
 
 
 
