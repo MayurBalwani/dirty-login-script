@@ -22,7 +22,7 @@ locators= {
 }
 
 # Read data from the credentials.json file
-with open('credentials.json', 'r') as file:
+with open('assets/credentials.json', 'r') as file:
     data= json.load(file)
 
     print('Reading credentials from "credentials.json" file...\n')
