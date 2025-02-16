@@ -83,8 +83,7 @@ welcomePageHeader= wait.until(EC.visibility_of_element_located(l['login-successf
 if welcomePageHeader: print('Verified Successful Login!')
 
 driver.save_screenshot('./snapshots/Login_successful_practice_automation.png')
-
-
+# Github Jenkins polling SCM test
 
 
 
