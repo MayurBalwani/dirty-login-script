@@ -10,6 +10,8 @@ pipeline {
                         values 'linux', 'windows'
                     }
                 }
+                
+                
                 agent { label OS_TYPE }
 
                 stages {
