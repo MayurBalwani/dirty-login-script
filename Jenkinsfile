@@ -1,6 +1,14 @@
 node {
     def isLinux = isUnix()  // Automatically detect OS type
 
+    stage('Clone Repository') {
+        if (isLinux) {
+            sh 'git clone https://your-repo-url.git'
+        } else {
+            bat 'git clone https://your-repo-url.git'
+        }
+    }
+
     stage('Creating the virtual environment') {
         if (isLinux) {
             sh 'python3 -m venv venv'
