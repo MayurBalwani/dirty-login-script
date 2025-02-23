@@ -1,8 +1,5 @@
 pipeline {
     agent none
-    tools {
-        git isUnix() ? 'Git-Linux' : 'Git-Windows'  // Auto-select based on OS
-    }
     stages {
         stage('Run on Multiple OS') {
             matrix {
@@ -15,15 +12,20 @@ pipeline {
                 agent { label OS_TYPE }  // Runs sequentially per OS
                 
                 stages {
-                    stage('Clone Repository') {
+                    stage('Setup Git') {
+                        tools {
+                            git (OS_TYPE == 'linux' ? 'Git-Linux' : 'Git-Windows')
+                        }
                         steps {
                             script {
-                                if (OS_TYPE == 'linux') {
-                                    git 'https://github.com/MayurBalwani/dirty-login-script.git'
-                                } else {
-                                    git 'https://github.com/MayurBalwani/dirty-login-script.git'
-                                }
+                                echo "Using Git tool: ${OS_TYPE == 'linux' ? 'Git-Linux' : 'Git-Windows'}"
                             }
+                        }
+                    }
+
+                    stage('Clone Repository') {
+                        steps {
+                            git 'https://github.com/MayurBalwani/dirty-login-script.git'
                         }
                     }
 
