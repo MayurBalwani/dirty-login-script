@@ -17,7 +17,6 @@ pipeline {
                             script {
                                 def gitTool = (OS_TYPE == 'linux') ? 'Git-Linux' : 'Git-Windows'
                                 echo "Using Git tool: ${gitTool}"
-                                tool name: gitTool, type: 'org.jenkinsci.plugins.git.GitTool'
                             }
                         }
                     }
