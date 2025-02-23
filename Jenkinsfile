@@ -3,9 +3,13 @@ node {
 
     stage('Clone Repository') {
         if (isLinux) {
-            sh 'git clone https://github.com/MayurBalwani/dirty-login-script.git'
+            sh '''
+            rm -rf ./dirty-login-script
+            git clone https://github.com/MayurBalwani/dirty-login-script.git'''
         } else {
-            bat 'git clone https://github.com/MayurBalwani/dirty-login-script.git'
+            bat '''
+            rmdir /s /q "dirty-login-script"
+            git clone https://github.com/MayurBalwani/dirty-login-script.git'''
         }
     }
 
