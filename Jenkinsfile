@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    tools {
+        git isUnix() ? 'Git-Linux' : 'Git-Windows'  // Auto-select based on OS
+    }
     stages {
         stage('Run on Multiple OS') {
             matrix {
@@ -17,13 +20,11 @@ pipeline {
                             script {
                                 if (OS_TYPE == 'linux') {
                                     sh '''
-                                    rm -rf ./dirty-login-script
-                                    git clone https://github.com/MayurBalwani/dirty-login-script.git
+                                    git 'https://github.com/MayurBalwani/dirty-login-script.git'
                                     '''
                                 } else {
                                     bat '''
-                                    rmdir /s /q "dirty-login-script"
-                                    git clone https://github.com/MayurBalwani/dirty-login-script.git
+                                    git 'https://github.com/MayurBalwani/dirty-login-script.git'
                                     '''
                                 }
                             }
@@ -48,13 +49,11 @@ pipeline {
                                 if (OS_TYPE == 'linux') {
                                     sh '''
                                     . ./venv/bin/activate
-                                    cd ./dirty-login-script
                                     pip install -r requirements.txt
                                     '''
                                 } else {
                                     bat '''
-                                    cd venv\\Scripts && call activate
-                                    cd ../.. && cd ./dirty-login-script
+                                    cd venv\\Scripts && call activate && cd ../..
                                     pip install -r requirements.txt
                                     '''
                                 }
@@ -68,13 +67,11 @@ pipeline {
                                 if (OS_TYPE == 'linux') {
                                     sh '''
                                     . ./venv/bin/activate
-                                    cd ./dirty-login-script
                                     python main.py
                                     '''
                                 } else {
                                     bat '''
                                     cd venv\\Scripts && call activate && cd ../..
-                                    cd ./dirty-login-script
                                     python main.py
                                     '''
                                 }
