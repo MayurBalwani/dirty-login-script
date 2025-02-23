@@ -19,13 +19,9 @@ pipeline {
                         steps {
                             script {
                                 if (OS_TYPE == 'linux') {
-                                    sh '''
                                     git 'https://github.com/MayurBalwani/dirty-login-script.git'
-                                    '''
                                 } else {
-                                    bat '''
                                     git 'https://github.com/MayurBalwani/dirty-login-script.git'
-                                    '''
                                 }
                             }
                         }
