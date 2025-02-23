@@ -3,9 +3,9 @@ node {
 
     stage('Clone Repository') {
         if (isLinux) {
-            sh 'git clone https://your-repo-url.git'
+            sh 'git clone https://github.com/MayurBalwani/dirty-login-script.git'
         } else {
-            bat 'git clone https://your-repo-url.git'
+            bat 'git clone https://github.com/MayurBalwani/dirty-login-script.git'
         }
     }
 
