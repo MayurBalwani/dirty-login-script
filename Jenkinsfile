@@ -36,11 +36,13 @@ node {
         if (isLinux) {
             sh '''
             . ./venv/bin/activate
-            python main.py
+            cd ./dirty-login-script
+            // python main.py
             '''
         } else {
             bat '''
             cd venv\\Scripts && call activate && cd ../..
+            cd ./dirty-login-script
             python main.py
             '''
         }
