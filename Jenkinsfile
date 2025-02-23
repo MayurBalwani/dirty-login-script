@@ -17,6 +17,7 @@ node {
         }
     }
 
+
     stage('Install requirements') {
         if (isLinux) {
             sh '''
@@ -37,7 +38,7 @@ node {
             sh '''
             . ./venv/bin/activate
             cd ./dirty-login-script
-            python main.py
+            // python main.py
             '''
         } else {
             bat '''
